@@ -11,89 +11,126 @@ html {
 
 body {
     font-family: Arial, sans-serif;
-    color: #fff;
-    background-color: #141414;
+    color: #202027;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .header {
     width: 100%;
 }
 
+/* Главный экран */
+
 .welcome {
     position: relative;
-    min-height: 710px;
+    width: 100%;
+    max-width: 1440px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 60px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: #141414;
-    background-image: url("img/фон.jpg");
-    background-size: cover;
-    background-position: center;
+    align-items: center;
     overflow: hidden;
+    background-color: #e1ff8f;
+    background-image: url("img/фон.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .welcome__content {
+    position: relative;
+    z-index: 1;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 160px 0 100px;
+    padding-bottom: 90px;
+    text-align: left;
 }
 
 .welcome__title {
-    max-width: 800px;
+    max-width: 850px;
+    margin-bottom: 24px;
+    color: #202027;
     font-size: 64px;
-    line-height: 1.1;
     font-weight: 700;
-    margin-bottom: 32px;
+    line-height: 1.1;
 }
 
 .welcome__text {
     max-width: 700px;
+    margin-bottom: 32px;
+    color: #202027;
     font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 44px;
+    line-height: 1.4;
 }
 
 .welcome__button {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    min-width: 247px;
-    min-height: 66px;
-    padding: 16px 32px;
-    color: #fff;
+    align-items: center;
+    width: 247px;
+    height: 66px;
+    border: none;
+    border-radius: 60px;
     background-color: #202027;
-    border-radius: 30px;
-    text-decoration: none;
+    color: #fff;
     font-size: 18px;
-    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .welcome__button:hover {
-    background-color: #4545f5;
-    transform: scale(1.04);
+    background-color: #fff;
+    color: #202027;
 }
 
+/* Бегущая строка */
+
 .ticker {
+    position: absolute;
+    top: 710px;
+    left: 0;
+    z-index: 5;
     width: 100%;
+    height: 90px;
     overflow: hidden;
 }
 
 .ticker__track {
     display: flex;
     width: max-content;
+    height: 90px;
+    animation: ticker-move 25s linear infinite;
 }
 
 .ticker__image {
     display: block;
-    width: auto;
-    max-width: none;
-    height: 50px;
+    width: 3220px;
+    height: 90px;
     flex-shrink: 0;
+    object-fit: fill;
 }
 
+@keyframes ticker-move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Раздел с играми */
+
 .games {
-    padding: 80px 0 100px;
+    padding: 94px 20px 100px;
     background-color: #141414;
     background-image: url("img/фон игр.jpg");
     background-size: cover;
@@ -102,181 +139,191 @@ body {
 }
 
 .games__content {
-    width: calc(100% - 48px);
+    width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .games__title {
-    width: 314px;
-    min-height: 78px;
-    margin: 0 0 24px;
+    margin-bottom: 48px;
     color: #fff;
     font-size: 48px;
-    line-height: 1.2;
     font-weight: 700;
-    text-align: left;
+    line-height: 1.2;
 }
 
 .games__description {
-    width: 788px;
-    max-width: 100%;
-    min-height: 96px;
-    margin: 0 0 48px;
+    max-width: 788px;
+    margin: -24px 0 48px;
     color: #fff;
     font-size: 16px;
     line-height: 1.5;
-    text-align: left;
 }
+
+/* Сетка карточек */
 
 .games__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/* Карточка игры целиком */
+
 .game-card {
+    position: relative;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    height: 473px;
     min-width: 0;
-    padding: 32px;
-    color: #202027;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 20px;
     background-color: #fff;
-    border-radius: 30px;
-    text-decoration: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .game-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
 }
+
+/* Фотография сверху */
 
 .game-card__image {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
+    height: 314px;
+    flex-shrink: 0;
     object-fit: cover;
-    border-radius: 20px;
-    margin-bottom: 24px;
+    border-radius: 20px 20px 0 0;
 }
 
+/* Нижняя белая часть: номер и название */
+
 .game-card__number {
-    margin-bottom: 16px;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108px;
+    height: 36px;
+    flex-shrink: 0;
+    margin: 16px 16px 12px;
+    border-radius: 60px;
+    background-color: #eaeaea;
     color: #202027;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
 }
 
 .game-card__title {
-    font-size: 32px;
-    line-height: 1.2;
-    font-weight: 700;
+    padding: 0 16px;
     color: #202027;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-@media (max-width: 1248px) {
-    .welcome__content {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
+/* Планшеты */
 
-    .games__content {
-        width: calc(100% - 48px);
-    }
-
-    .game-card {
-        padding: 24px;
-    }
-
-    .game-card__title {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
     .welcome {
-        min-height: 650px;
-        background-position: center;
-    }
-
-    .welcome__content {
-        padding: 100px 16px 60px;
+        padding-right: 40px;
+        padding-left: 40px;
     }
 
     .welcome__title {
-        font-size: clamp(36px, 9vw, 44px);
-        line-height: 1.1;
-        margin-bottom: 24px;
+        max-width: 700px;
+        font-size: 52px;
+    }
+
+    .games__list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+/* Телефоны */
+
+@media (max-width: 767px) {
+    .welcome {
+        height: 600px;
+        min-height: 600px;
+        padding: 20px;
+    }
+
+    .welcome__content {
+        padding-bottom: 70px;
+    }
+
+    .welcome__title {
+        max-width: 100%;
+        font-size: 40px;
     }
 
     .welcome__text {
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 32px;
-    }
-
-    .welcome__text br {
-        display: none;
+        font-size: 18px;
     }
 
     .welcome__button {
-        min-width: 200px;
-        min-height: 56px;
-        font-size: 16px;
+        width: 200px;
+        height: 56px;
+        font-size: 20px;
+    }
+
+    .ticker {
+        top: auto;
+        bottom: 0;
+        height: 50px;
+    }
+
+    .ticker__track {
+        height: 50px;
     }
 
     .ticker__image {
-        height: 36px;
+        width: auto;
+        height: 50px;
     }
 
     .games {
-        padding: 48px 0 64px;
-        background-position: center top;
-    }
-
-    .games__content {
-        width: auto;
-        margin: 0 16px;
+        padding: 60px 20px;
     }
 
     .games__title {
-        width: 100%;
-        min-height: auto;
-        margin-bottom: 24px;
+        margin-bottom: 32px;
         font-size: 36px;
     }
 
     .games__description {
-        width: 100%;
-        min-height: auto;
-        margin-bottom: 32px;
+        margin: -12px 0 32px;
         font-size: 16px;
-        line-height: 1.5;
     }
 
     .games__list {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         gap: 24px;
     }
 
     .game-card {
-        width: 100%;
-        padding: 20px;
-        border-radius: 24px;
+        height: auto;
+        min-height: 473px;
     }
 
     .game-card__image {
-        border-radius: 16px;
-        margin-bottom: 20px;
-    }
-
-    .game-card__number {
-        margin-bottom: 12px;
-        font-size: 14px;
+        height: auto;
+        aspect-ratio: 378 / 314;
     }
 
     .game-card__title {
-        font-size: 24px;
+        font-size: 26px;
     }
 }
