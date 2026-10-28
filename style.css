@@ -28,9 +28,9 @@ a {
 .welcome {
     position: relative;
     width: 100%;
-    max-width: 1440px;
+    max-width: none;
     height: 800px;
-    margin: 0 auto;
+    margin: 0;
     padding: 60px;
     display: flex;
     align-items: center;
@@ -127,7 +127,7 @@ a {
     }
 }
 
-/* Раздел с играми */
+/* Раздел «Об играх» */
 
 .games {
     padding: 94px 20px 100px;
@@ -160,26 +160,28 @@ a {
     line-height: 1.5;
 }
 
-/* Сетка карточек */
+/* Сетка: три карточки в каждом ряду */
 
 .games__list {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-flow: row;
+    align-items: start;
     gap: 16px;
     width: 100%;
-    max-width: 1200px;
+    max-width: 1166px;
     margin: 0 auto;
 }
 
-/* Карточка игры целиком */
+/* Карточки */
 
 .game-card {
     position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 473px;
     min-width: 0;
+    height: 473px;
     overflow: hidden;
     padding: 0;
     border-radius: 20px;
@@ -194,7 +196,24 @@ a {
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Фотография сверху */
+/* Размеры карточек по макету */
+
+.game-card:nth-child(1),
+.game-card:nth-child(3) {
+    height: 473px;
+}
+
+.game-card:nth-child(2),
+.game-card:nth-child(5) {
+    height: 512px;
+}
+
+.game-card:nth-child(4),
+.game-card:nth-child(6) {
+    height: 551px;
+}
+
+/* Изображение в карточке */
 
 .game-card__image {
     display: block;
@@ -205,7 +224,7 @@ a {
     border-radius: 20px 20px 0 0;
 }
 
-/* Нижняя белая часть: номер и название */
+/* Номер игры */
 
 .game-card__number {
     display: flex;
@@ -223,6 +242,8 @@ a {
     white-space: nowrap;
 }
 
+/* Название игры */
+
 .game-card__title {
     padding: 0 16px;
     color: #202027;
@@ -232,9 +253,9 @@ a {
     line-height: 1.2;
 }
 
-/* Планшеты */
+/* Планшеты: три колонки, если они помещаются */
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) and (min-width: 768px) {
     .welcome {
         padding-right: 40px;
         padding-left: 40px;
@@ -246,71 +267,8 @@ a {
     }
 
     .games__list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-    }
-}
-
-/* Телефоны */
-
-@media (max-width: 767px) {
-    .welcome {
-        height: 600px;
-        min-height: 600px;
-        padding: 20px;
-    }
-
-    .welcome__content {
-        padding-bottom: 70px;
-    }
-
-    .welcome__title {
-        max-width: 100%;
-        font-size: 40px;
-    }
-
-    .welcome__text {
-        font-size: 18px;
-    }
-
-    .welcome__button {
-        width: 200px;
-        height: 56px;
-        font-size: 20px;
-    }
-
-    .ticker {
-        top: auto;
-        bottom: 0;
-        height: 50px;
-    }
-
-    .ticker__track {
-        height: 50px;
-    }
-
-    .ticker__image {
-        width: auto;
-        height: 50px;
-    }
-
-    .games {
-        padding: 60px 20px;
-    }
-
-    .games__title {
-        margin-bottom: 32px;
-        font-size: 36px;
-    }
-
-    .games__description {
-        margin: -12px 0 32px;
-        font-size: 16px;
-    }
-
-    .games__list {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 24px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
     }
 
     .game-card {
@@ -318,12 +276,88 @@ a {
         min-height: 473px;
     }
 
-    .game-card__image {
-        height: auto;
-        aspect-ratio: 378 / 314;
+    .game-card:nth-child(1),
+    .game-card:nth-child(3) {
+        min-height: 473px;
+    }
+
+    .game-card:nth-child(2),
+    .game-card:nth-child(5) {
+        min-height: 512px;
+    }
+
+    .game-card:nth-child(4),
+    .game-card:nth-child(6) {
+        min-height: 551px;
     }
 
     .game-card__title {
-        font-size: 26px;
+        font-size: 20px;
     }
 }
+
+/* Мобильная версия */
+
+@media (max-width: 767px) {
+    .welcome {
+        height: 508px;
+        min-height: 508px;
+        padding: 20px 22px 58px;
+        align-items: center;
+        justify-content: center;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+
+    .welcome__content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+    .welcome__title {
+        max-width: 100%;
+        margin-bottom: 14px;
+        font-size: 28px;
+        line-height: 1.05;
+    }
+
+    .welcome__text {
+        max-width: 100%;
+        margin-bottom: 20px;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    .welcome__button {
+        width: 100%;
+        max-width: 300px;
+        height: 48px;
+        font-size: 12px;
+    }
+
+    .ticker {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+    }
+
+    .ticker__track {
+        height: 30px;
+    }
+
+    .ticker__image {
+        width: auto;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    .games {
+        display: none;
+    }
+}
+
