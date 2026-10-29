@@ -1,0 +1,446 @@
+
+/* Общие настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #202027;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.header {
+    width: 100%;
+}
+
+/* Главный экран */
+.welcome {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #e1ff8f;
+    background-image: url("img/фон.jpg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Текст и кнопка */
+.welcome__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 90px;
+    text-align: left;
+}
+
+.welcome__title {
+    max-width: 850px;
+    margin-bottom: 24px;
+    color: #202027;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.welcome__text {
+    width: 720px;
+    max-width: 100%;
+    margin-bottom: 32px;
+    color: #202027;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+/* Кнопка «Поехали!» — исходный размер */
+.welcome__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 247px;
+    height: 66px;
+    border: none;
+    border-radius: 60px;
+    background-color: #202027;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.welcome__button:hover {
+    background-color: #fff;
+    color: #202027;
+}
+
+/* Большая декоративная фигура справа */
+.welcome__decoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 0;
+    width: 45%;
+    height: 65%;
+    object-fit: contain;
+    object-position: top right;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* Декоративные звёзды на главном экране */
+.welcome__star {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    height: auto;
+    object-fit: contain;
+    background: transparent;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+/* Звезда № 2: 57 × 57 px */
+.welcome__star--1 {
+    top: 94px;
+    left: 63px;
+    width: 57px;
+    height: 57px;
+}
+
+/* Звезда № 3: 35 × 35 px */
+.welcome__star--2 {
+    top: 69px;
+    left: 156px;
+    width: 35px;
+    height: 35px;
+}
+
+/* Звезда № 4: 83 × 83 px */
+.welcome__star--3 {
+    right: 344px;
+    bottom: 149px;
+    width: 83px;
+    height: 83px;
+}
+
+/* Звезда № 5: 37 × 37 px */
+.welcome__star--4 {
+    right: 455px;
+    bottom: 225px;
+    width: 37px;
+    height: 37px;
+}
+
+/* Бегущая строка */
+.ticker {
+    position: absolute;
+    top: 710px;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    background-color: #cbff00;
+}
+
+.ticker__track {
+    display: flex;
+    width: max-content;
+    height: 90px;
+    animation: ticker-move 25s linear infinite;
+}
+
+.ticker__image {
+    display: block;
+    width: 3220px;
+    height: 90px;
+    flex-shrink: 0;
+    object-fit: fill;
+}
+
+@keyframes ticker-move {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Раздел «Об играх» */
+.games {
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px 100px;
+    background-color: #202027;
+    background-image: url("img/фон игр.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.games__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.games__title {
+    margin-bottom: 32px;
+    color: #fff;
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.games__description {
+    max-width: 788px;
+    margin: 0 0 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+/* Декоративные звёзды на фоне раздела игр */
+.games__star {
+    position: absolute;
+    z-index: 0;
+    height: auto;
+    background: transparent;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+}
+
+.games__star--1 {
+    top: 80px;
+    right: 12%;
+    width: 36px;
+}
+
+.games__star--2 {
+    top: 240px;
+    left: 5%;
+    width: 24px;
+}
+
+/* Сетка карточек: три колонки */
+.games__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Карточки игр */
+.game-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    height: 473px;
+    overflow: hidden;
+    padding: 0;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.game-card:hover {
+    z-index: 2;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Изображения карточек */
+.game-card__image {
+    display: block;
+    width: 100%;
+    height: 314px;
+    flex-shrink: 0;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+}
+
+/* Номер игры */
+.game-card__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 108px;
+    height: 36px;
+    flex-shrink: 0;
+    margin: 16px 16px 12px;
+    border-radius: 60px;
+    background-color: #eaeaea;
+    color: #202027;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Название игры */
+.game-card__title {
+    padding: 0 16px 16px;
+    color: #202027;
+    text-align: left;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+/* Планшеты */
+@media (max-width: 1200px) and (min-width: 768px) {
+    .welcome {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .welcome__title {
+        max-width: 700px;
+        font-size: 52px;
+    }
+
+    .games__list {
+        gap: 12px;
+    }
+
+    .game-card {
+        height: 440px;
+    }
+
+    .game-card__image {
+        height: 260px;
+    }
+
+    .game-card__title {
+        font-size: 20px;
+    }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+    .welcome {
+        height: 508px;
+        min-height: 508px;
+        padding: 20px 22px 58px;
+        align-items: center;
+        justify-content: center;
+        background-size: 100% 100%;
+        background-position: center;
+    }
+
+    .welcome__content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding-bottom: 0;
+        text-align: center;
+    }
+
+    .welcome__title {
+        max-width: 100%;
+        margin-bottom: 14px;
+        font-size: 28px;
+        line-height: 1.05;
+    }
+
+    .welcome__text {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 20px;
+        font-size: 11px;
+        line-height: 1.35;
+    }
+
+    /* Кнопка на телефоне: 118 × 34 px */
+    .welcome__button {
+        width: 118px;
+        height: 34px;
+        font-size: 12px;
+    }
+
+    /* Большая фигура справа на телефоне */
+    .welcome__decoration {
+        width: 48%;
+        height: 40%;
+    }
+
+    /* Звёзды на телефоне */
+    .welcome__star--1 {
+        top: 25px;
+        left: 8%;
+        width: 20px;
+        height: auto;
+    }
+
+    .welcome__star--2 {
+        top: 18px;
+        left: 15%;
+        width: 14px;
+        height: auto;
+    }
+
+    .welcome__star--3 {
+        right: 10%;
+        bottom: 45px;
+        width: 30px;
+        height: auto;
+    }
+
+    .welcome__star--4 {
+        right: 18%;
+        bottom: 65px;
+        width: 16px;
+        height: auto;
+    }
+
+    /* Бегущая строка на телефоне */
+    .ticker {
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 30px;
+    }
+
+    .ticker__track {
+        height: 30px;
+    }
+
+    .ticker__image {
+        width: auto;
+        height: 30px;
+        object-fit: contain;
+    }
+
+    /* Раздел игр скрыт в мобильной версии */
+    .games {
+        display: none;
+    }
+}
