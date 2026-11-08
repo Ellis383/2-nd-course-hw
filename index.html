@@ -1,12 +1,155 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сайт с мини-играми</title>
+
+  <!-- Шрифт Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- Шапка сайта -->
+  <header class="header">
+    <section class="welcome">
+
+      <!-- Большая фигура справа -->
+      <img src="img/стар 1.png" alt="" class="welcome__decoration">
+
+      <!-- Звёзды в шапке -->
+      <img src="img/стар 2.png" alt="" class="welcome__star welcome__star--1">
+      <img src="img/стар 3.png" alt="" class="welcome__star welcome__star--2">
+      <img src="img/стар 4.png" alt="" class="welcome__star welcome__star--3">
+      <img src="img/стар 5.png" alt="" class="welcome__star welcome__star--4">
+
+      <!-- Контент шапки -->
+      <div class="welcome__content">
+        <h1 class="welcome__title">
+          Добро пожаловать<br>
+          на мой сайт мини-игр
+        </h1>
+
+        <p class="welcome__text">
+          Тебе предстоит пройти несколько увлекательных игр.<br>
+          Если готов, нажимай «Поехали!» и приступай.
+        </p>
+
+        <a href="#games" class="welcome__button">
+          Поехали!
+        </a>
+      </div>
+
+      <!-- Бегущая строка -->
+      <div class="ticker">
+        <div class="ticker__track">
+          <img src="img/Полоса для анимации.jpg" alt="" class="ticker__image">
+          <img src="img/Полоса для анимации.jpg" alt="" class="ticker__image">
+        </div>
+      </div>
+
+    </section>
+  </header>
+
+  <main>
+
+    <!-- Блок «Об играх» -->
+    <section class="games" id="games">
+
+      <!-- Звёзды на фоне -->
+      <img src="img/звезда 1.png" alt="" class="games__star games__star--1">
+      <img src="img/звезда 2.png" alt="" class="games__star games__star--2">
+      <img src="img/звезда 3.png" alt="" class="games__star games__star--3">
+
+      <!-- Основной контент -->
+      <div class="games__content">
+
+        <h2 class="games__title">
+          Об играх
+        </h2>
+
+        <p class="games__description">
+          В моей коллекции представлено 6 игр на разные темы.<br>
+          Игры несложные — в них может поиграть каждый.<br>
+          Все игры доступны для пользования.
+        </p>
+
+        <!-- Карточки в три колонки -->
+        <div class="games__list">
+
+          <!-- Колонка 1: игры 1 и 4 -->
+          <div class="games__column">
+
+            <a href="#game-1" class="game-card game-card--1">
+              <img src="img/игра 1.jpg" alt="Угадай число" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 1</div>
+                <h3 class="game-card__title">Угадай число</h3>
+              </div>
+            </a>
+
+            <a href="#game-4" class="game-card game-card--4">
+              <img src="img/игра 4.jpg" alt="Камень, ножницы, бумага" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 4</div>
+                <h3 class="game-card__title">Камень,<br>ножницы,<br>бумага</h3>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Колонка 2: игры 2 и 5 -->
+          <div class="games__column">
+
+            <a href="#game-2" class="game-card game-card--2">
+              <img src="img/игра 2.jpg" alt="Простая арифметика" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 2</div>
+                <h3 class="game-card__title">Простая<br>арифметика</h3>
+              </div>
+            </a>
+
+            <a href="#game-5" class="game-card game-card--5">
+              <img src="img/игра 5.jpg" alt="Простая викторина" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 5</div>
+                <h3 class="game-card__title">Простая<br>викторина</h3>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Колонка 3: игры 3 и 6 -->
+          <div class="games__column">
+
+            <a href="#game-3" class="game-card game-card--3">
+              <img src="img/игра 3.jpg" alt="Переверни текст" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 3</div>
+                <h3 class="game-card__title">Переверни текст</h3>
+              </div>
+            </a>
+
+            <a href="#game-6" class="game-card game-card--6">
+              <img src="img/игра 6.jpg" alt="Генератор случайных цветов" class="game-card__image">
+              <div class="game-card__content">
+                <div class="game-card__number">Игра № 6</div>
+                <h3 class="game-card__title">Генератор<br>случайных<br>цветов</h3>
+              </div>
+            </a>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
 
 </body>
 </html>

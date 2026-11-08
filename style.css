@@ -1,0 +1,453 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #202027;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header {
+  width: 100%;
+}
+
+/* Главный экран */
+.welcome {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background-color: #e1ff8f;
+  background-image: url("img/фон.jpg");
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.welcome__content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-left: calc(50% - 600px);
+  padding-right: calc(50% - 600px);
+  padding-bottom: 90px;
+}
+
+.welcome__title {
+  max-width: 850px;
+  margin-bottom: 24px;
+  color: #202027;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.welcome__text {
+  width: 720px;
+  max-width: 100%;
+  margin-bottom: 48px;
+  color: #202027;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+.welcome__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 247px;
+  height: 66px;
+  border-radius: 60px;
+  background-color: #202027;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.welcome__button:hover {
+  background-color: #ffffff;
+  color: #202027;
+}
+
+/* Большая декоративная фигура в шапке */
+.welcome__decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  width: 45%;
+  height: 65%;
+  object-fit: contain;
+  object-position: top right;
+  pointer-events: none;
+}
+
+/* Звёзды в шапке */
+.welcome__star {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.welcome__star--1 {
+  top: 94px;
+  left: 63px;
+  width: 57px;
+  height: 57px;
+}
+
+.welcome__star--2 {
+  top: 69px;
+  left: 156px;
+  width: 35px;
+  height: 35px;
+}
+
+.welcome__star--3 {
+  right: 344px;
+  bottom: 149px;
+  width: 83px;
+  height: 83px;
+}
+
+.welcome__star--4 {
+  right: 455px;
+  bottom: 225px;
+  width: 37px;
+  height: 37px;
+}
+
+/* Бегущая строка */
+.ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 90px;
+  overflow: hidden;
+  background-color: #cbff00;
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  height: 90px;
+  animation: ticker-move 25s linear infinite;
+}
+
+.ticker__image {
+  display: block;
+  width: 3220px;
+  height: 90px;
+  flex-shrink: 0;
+  object-fit: fill;
+}
+
+@keyframes ticker-move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Раздел «Об играх» */
+.games {
+  position: relative;
+  min-height: 1750px;
+  overflow: hidden;
+  padding-top: 94px;
+  padding-bottom: 100px;
+  background-color: #202027;
+  background-image: url("img/фон игр.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.games__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-left: calc(50% - 600px);
+  padding-right: calc(50% - 600px);
+}
+
+.games__title {
+  margin-bottom: 24px;
+  color: #ffffff;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.games__description {
+  max-width: 788px;
+  margin-bottom: 72px;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* Звёзды в блоке «Об играх» */
+.games__star {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.games__star--1 {
+  width: 584.72px;
+  height: 584.72px;
+  top: 77px;
+  left: 933px;
+  transform: rotate(6.77deg);
+}
+
+.games__star--2 {
+  width: 31.34px;
+  height: 31.34px;
+  top: 770px;
+  left: 25px;
+  transform: rotate(-5.45deg);
+}
+
+.games__star--3 {
+  width: 54.60px;
+  height: 54.60px;
+  top: 822px;
+  left: 40px;
+  transform: rotate(-5.45deg);
+}
+
+/* Сетка карточек: три колонки, зазор 32px */
+.games__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 32px;
+  align-items: start;
+  width: 100%;
+}
+
+.games__column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Карточки */
+.game-card {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Высота карточек по макету */
+.game-card--1,
+.game-card--3 {
+  height: 473px;
+}
+
+.game-card--2,
+.game-card--5 {
+  height: 512px;
+}
+
+.game-card--4,
+.game-card--6 {
+  height: 551px;
+}
+
+/* Изображения карточек */
+.game-card__image {
+  display: block;
+  width: 100%;
+  height: 314px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+/* Обёртка текста карточки */
+.game-card__content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Номер игры */
+.game-card__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 108px;
+  height: 36px;
+  flex-shrink: 0;
+  margin: 16px 16px 12px;
+  border-radius: 60px;
+  background-color: #eaeaea;
+  color: #202027;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Названия игр */
+.game-card__title {
+  padding: 0 16px 24px;
+  color: #202027;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Планшеты */
+@media (max-width: 1200px) and (min-width: 768px) {
+  .welcome__content,
+  .games__content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .welcome__title {
+    font-size: 52px;
+  }
+
+  .games__list {
+    column-gap: 24px;
+  }
+
+  .games__column {
+    gap: 24px;
+  }
+
+  .game-card__image {
+    height: 260px;
+  }
+
+  .game-card__title {
+    font-size: 20px;
+  }
+}
+
+/* Мобильная версия */
+@media (max-width: 767px) {
+  .welcome {
+    height: 508px;
+    min-height: 508px;
+    padding: 20px 22px 58px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .welcome__content {
+    padding: 0;
+    text-align: center;
+  }
+
+  .welcome__title {
+    margin-bottom: 14px;
+    font-size: 28px;
+    line-height: 1.05;
+  }
+
+  .welcome__text {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.35;
+  }
+
+  .welcome__button {
+    width: 118px;
+    height: 34px;
+    font-size: 12px;
+  }
+
+  .welcome__decoration {
+    width: 48%;
+    height: 40%;
+  }
+
+  .welcome__star--1 {
+    top: 25px;
+    left: 8%;
+    width: 20px;
+    height: auto;
+  }
+
+  .welcome__star--2 {
+    top: 18px;
+    left: 15%;
+    width: 14px;
+    height: auto;
+  }
+
+  .welcome__star--3 {
+    top: auto;
+    right: 10%;
+    bottom: 45px;
+    left: auto;
+    width: 30px;
+    height: auto;
+  }
+
+  .welcome__star--4 {
+    top: auto;
+    right: 18%;
+    bottom: 65px;
+    left: auto;
+    width: 16px;
+    height: auto;
+  }
+
+  .ticker {
+    height: 30px;
+  }
+
+  .ticker__track {
+    height: 30px;
+  }
+
+  .ticker__image {
+    width: auto;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  .games {
+    display: none;
+  }
+}
