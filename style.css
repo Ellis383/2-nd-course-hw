@@ -85,14 +85,14 @@ a {
   color: #202027;
 }
 
-/* Большая декоративная фигура в шапке */
+/* Большая декоративная фигура в шапке (увеличена по замечанию) */
 .welcome__decoration {
   position: absolute;
   top: 0;
   right: 0;
   z-index: 1;
-  width: 45%;
-  height: 65%;
+  width: 58%;
+  height: 85%;
   object-fit: contain;
   object-position: top right;
   pointer-events: none;
@@ -291,7 +291,6 @@ a {
   height: 551px;
 }
 
-/* Изображения карточек */
 .game-card__image {
   display: block;
   width: 100%;
@@ -301,13 +300,11 @@ a {
   border-radius: 20px 20px 0 0;
 }
 
-/* Обёртка текста карточки */
 .game-card__content {
   display: flex;
   flex-direction: column;
 }
 
-/* Номер игры */
 .game-card__number {
   display: flex;
   align-items: center;
@@ -324,19 +321,196 @@ a {
   white-space: nowrap;
 }
 
-/* Названия игр */
+/* Названия игр (увеличены по замечанию: 32px) */
 .game-card__title {
   padding: 0 16px 24px;
   color: #202027;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
+}
+
+/* Блок «Мини-игры» */
+.mini-games {
+  position: relative;
+  overflow-x: clip;
+  padding: 0 0 40px;
+  background-color: #202027;
+}
+
+.mini-games__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-left: calc(50% - 600px);
+  padding-right: calc(50% - 600px);
+}
+
+/* Подпись «Мини-игры»: 1200 x 78 */
+.mini-games__title {
+  width: 1200px;
+  max-width: 100%;
+  height: 78px;
+  margin-bottom: 72px;
+  color: #ffffff;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 78px;
+}
+
+.mini-games__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Карточка игры: 1200 x 500 */
+.mini-card {
+  display: flex;
+  width: 1200px;
+  max-width: 100%;
+  height: 500px;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #ffffff;
+  transition: transform 0.3s;
+}
+
+.mini-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Каждая вторая карточка: картинка слева, текст справа */
+.mini-card--reverse {
+  flex-direction: row-reverse;
+}
+
+.mini-card__info {
+  display: flex;
+  flex: 0 0 600px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 48px;
+}
+
+/* Название игры: 504 x 59 */
+.mini-card__title {
+  width: 504px;
+  max-width: 100%;
+  margin-bottom: 20px;
+  color: #202027;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Описание: 457 x 64 */
+.mini-card__text {
+  width: 457px;
+  max-width: 100%;
+  margin-bottom: 32px;
+  color: rgba(32, 32, 39, 0.6);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* Кнопка «Играть!»: 247 x 66 */
+.mini-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 247px;
+  height: 66px;
+  border: 2px solid #202027;
+  border-radius: 60px;
+  background-color: #202027;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.mini-card__button:hover {
+  background-color: #ffffff;
+  color: #202027;
+}
+
+/* Картинка карточки: 600 x 500 */
+.mini-card__image {
+  display: block;
+  flex: 0 0 600px;
+  width: 600px;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* Звёзды в блоке «Мини-игры»: координаты пересчитаны из Фигмы */
+.mini-games__star {
+  position: absolute;
+  z-index: 1;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.mini-games__star--7 {
+  top: 52px;
+  left: calc(50% + 557px);
+  width: 35.15px;
+  height: 35.15px;
+  transform: rotate(-7.08deg);
+}
+
+.mini-games__star--6 {
+  top: 85px;
+  left: calc(50% + 600px);
+  width: 68.86px;
+  height: 68.86px;
+  transform: rotate(-5.45deg);
+}
+
+.mini-games__star--8 {
+  top: 3325px;
+  left: calc(50% + 599px);
+  width: 69px;
+  height: 69px;
+}
+
+.mini-games__star--10 {
+  top: 3373px;
+  left: calc(50% + 529px);
+  width: 41px;
+  height: 41px;
+}
+
+/* Подвал: 1441 x 150 */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 150px;
+  background-color: #bcec30;
+}
+
+/* Подпись подвала: 285 x 29 */
+.footer__text {
+  width: 285px;
+  height: 29px;
+  color: #202027;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+  text-align: center;
 }
 
 /* Планшеты */
 @media (max-width: 1200px) and (min-width: 768px) {
   .welcome__content,
-  .games__content {
+  .games__content,
+  .mini-games__content {
     padding-left: 40px;
     padding-right: 40px;
   }
@@ -358,11 +532,11 @@ a {
   }
 
   .game-card__title {
-    font-size: 20px;
+    font-size: 26px;
   }
 }
 
-/* Мобильная версия */
+/* Мобильная версия: блоков «Об играх» и «Мини-игры» здесь нет */
 @media (max-width: 767px) {
   .welcome {
     height: 508px;
@@ -374,26 +548,29 @@ a {
 
   .welcome__content {
     padding: 0;
+    padding-bottom: 20px;
     text-align: center;
   }
 
   .welcome__title {
-    margin-bottom: 14px;
-    font-size: 28px;
-    line-height: 1.05;
+    max-width: 260px;
+    margin: 0 auto 20px;
+    font-size: 40px;
+    line-height: 1.1;
   }
 
   .welcome__text {
     width: 100%;
-    margin-bottom: 20px;
+    max-width: 320px;
+    margin: 0 auto 28px;
     font-size: 16px;
     line-height: 1.35;
   }
 
   .welcome__button {
-    width: 118px;
-    height: 34px;
-    font-size: 12px;
+    width: 220px;
+    height: 48px;
+    font-size: 16px;
   }
 
   .welcome__decoration {
@@ -447,7 +624,8 @@ a {
     object-fit: contain;
   }
 
-  .games {
+  .games,
+  .mini-games {
     display: none;
   }
 }
