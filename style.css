@@ -22,7 +22,7 @@ a {
   width: 100%;
 }
 
-/* Главный экран */
+/* ===== Главный экран ===== */
 .welcome {
   position: relative;
   width: 100%;
@@ -71,6 +71,7 @@ a {
   justify-content: center;
   width: 247px;
   height: 66px;
+  border: 1px solid #202027;
   border-radius: 60px;
   background-color: #202027;
   color: #ffffff;
@@ -80,12 +81,15 @@ a {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.welcome__button:hover {
-  background-color: #ffffff;
-  color: #202027;
+/* Состояние при наведении: только на десктопе, на телефоне не меняется */
+@media (min-width: 768px) and (hover: hover) {
+  .welcome__button:hover {
+    background-color: #ffffff;
+    color: #202027;
+  }
 }
 
-/* Большая декоративная фигура в шапке (увеличена по замечанию) */
+/* Большая декоративная фигура в шапке */
 .welcome__decoration {
   position: absolute;
   top: 0;
@@ -95,6 +99,15 @@ a {
   height: 85%;
   object-fit: contain;
   object-position: top right;
+  pointer-events: none;
+}
+
+/* Большая фигура для мобильной версии (на компьютере скрыта) */
+.welcome__decoration-mobile {
+  position: absolute;
+  z-index: 1;
+  display: none;
+  height: auto;
   pointer-events: none;
 }
 
@@ -135,7 +148,7 @@ a {
   height: 37px;
 }
 
-/* Бегущая строка */
+/* ===== Бегущая строка ===== */
 .ticker {
   position: absolute;
   bottom: 0;
@@ -171,10 +184,9 @@ a {
   }
 }
 
-/* Раздел «Об играх» */
+/* ===== Раздел «Об играх» ===== */
 .games {
   position: relative;
-  min-height: 1750px;
   overflow: hidden;
   padding-top: 94px;
   padding-bottom: 100px;
@@ -266,13 +278,18 @@ a {
   flex-direction: column;
   width: 100%;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: #ffffff;
   transition: transform 0.3s;
 }
 
-.game-card:hover {
-  transform: translateY(-5px);
+/* При наведении карточка увеличивается, но не залезает на соседние:
+   рост на сторону (около 14px) меньше зазора между карточками (32px) */
+@media (min-width: 768px) and (hover: hover) {
+  .game-card:hover {
+    z-index: 3;
+    transform: scale(1.075);
+  }
 }
 
 /* Высота карточек по макету */
@@ -297,7 +314,7 @@ a {
   height: 314px;
   flex-shrink: 0;
   object-fit: cover;
-  border-radius: 20px 20px 0 0;
+  border-radius: 30px 30px 0 0;
 }
 
 .game-card__content {
@@ -321,7 +338,7 @@ a {
   white-space: nowrap;
 }
 
-/* Названия игр (увеличены по замечанию: 32px) */
+/* Названия игр: 32px */
 .game-card__title {
   padding: 0 16px 24px;
   color: #202027;
@@ -330,11 +347,11 @@ a {
   line-height: 1.2;
 }
 
-/* Блок «Мини-игры» */
+/* ===== Блок «Мини-игры» ===== */
 .mini-games {
   position: relative;
   overflow-x: clip;
-  padding: 0 0 40px;
+  padding: 0 0 60px;
   background-color: #202027;
 }
 
@@ -364,20 +381,15 @@ a {
   gap: 32px;
 }
 
-/* Карточка игры: 1200 x 500 */
+/* Карточка игры: 1200 x 500. При наведении не меняется */
 .mini-card {
   display: flex;
   width: 1200px;
   max-width: 100%;
   height: 500px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: #ffffff;
-  transition: transform 0.3s;
-}
-
-.mini-card:hover {
-  transform: translateY(-5px);
 }
 
 /* Каждая вторая карточка: картинка слева, текст справа */
@@ -387,33 +399,33 @@ a {
 
 .mini-card__info {
   display: flex;
-  flex: 0 0 600px;
+  flex: 1 1 50%;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-  padding: 0 48px;
+  min-width: 0;
+  padding: 44px 48px 0;
 }
 
-/* Название игры: 504 x 59 */
+/* Название игры: ширина 504, строка 59 */
 .mini-card__title {
   width: 504px;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   color: #202027;
   font-size: 48px;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 59px;
 }
 
-/* Описание: 457 x 64 */
+/* Описание: ширина 457, две строки по 32 = 64 */
 .mini-card__text {
   width: 457px;
   max-width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 36px;
   color: rgba(32, 32, 39, 0.6);
   font-size: 24px;
   font-weight: 400;
-  line-height: 1.35;
+  line-height: 32px;
 }
 
 /* Кнопка «Играть!»: 247 x 66 */
@@ -423,26 +435,31 @@ a {
   justify-content: center;
   width: 247px;
   height: 66px;
-  border: 2px solid #202027;
+  border: 1px solid #202027;
   border-radius: 60px;
   background-color: #202027;
   color: #ffffff;
+  font-family: inherit;
   font-size: 24px;
   font-weight: 600;
+  cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.mini-card__button:hover {
-  background-color: #ffffff;
-  color: #202027;
+/* Состояние при наведении: только на десктопе */
+@media (min-width: 768px) and (hover: hover) {
+  .mini-card__button:hover {
+    background-color: #ffffff;
+    color: #202027;
+  }
 }
 
 /* Картинка карточки: 600 x 500 */
 .mini-card__image {
   display: block;
-  flex: 0 0 600px;
-  width: 600px;
-  height: 500px;
+  flex: 0 0 50%;
+  width: 50%;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -456,7 +473,7 @@ a {
 }
 
 .mini-games__star--7 {
-  top: 52px;
+  top: 56px;
   left: calc(50% + 557px);
   width: 35.15px;
   height: 35.15px;
@@ -464,7 +481,7 @@ a {
 }
 
 .mini-games__star--6 {
-  top: 85px;
+  top: 89px;
   left: calc(50% + 600px);
   width: 68.86px;
   height: 68.86px;
@@ -472,20 +489,20 @@ a {
 }
 
 .mini-games__star--8 {
-  top: 3325px;
+  top: 3329px;
   left: calc(50% + 599px);
   width: 69px;
   height: 69px;
 }
 
 .mini-games__star--10 {
-  top: 3373px;
+  top: 3377px;
   left: calc(50% + 529px);
   width: 41px;
   height: 41px;
 }
 
-/* Подвал: 1441 x 150 */
+/* ===== Подвал: статичный, без анимации и переходов ===== */
 .footer {
   display: flex;
   align-items: center;
@@ -495,18 +512,15 @@ a {
   background-color: #bcec30;
 }
 
-/* Подпись подвала: 285 x 29 */
 .footer__text {
-  width: 285px;
-  height: 29px;
   color: #202027;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 29px;
   text-align: center;
 }
 
-/* Планшеты */
+/* ===== Планшеты ===== */
 @media (max-width: 1200px) and (min-width: 768px) {
   .welcome__content,
   .games__content,
@@ -536,78 +550,92 @@ a {
   }
 }
 
-/* Мобильная версия: блоков «Об играх» и «Мини-игры» здесь нет */
+/* ===== Мобильная версия ===== */
 @media (max-width: 767px) {
   .welcome {
-    height: 508px;
-    min-height: 508px;
-    padding: 20px 22px 58px;
-    align-items: center;
+    height: 700px;
+    min-height: 700px;
+    padding: 0;
+    align-items: flex-start;
     justify-content: center;
   }
 
+  /* Плавающие отступы: контентная часть 310px по центру */
   .welcome__content {
-    padding: 0;
-    padding-bottom: 20px;
+    width: 100%;
+    padding: 157px calc(50% - 155px) 0;
     text-align: center;
   }
 
   .welcome__title {
-    max-width: 260px;
-    margin: 0 auto 20px;
+    max-width: 100%;
+    margin: 0 0 24px;
     font-size: 40px;
-    line-height: 1.1;
+    line-height: 1.3;
   }
 
   .welcome__text {
     width: 100%;
-    max-width: 320px;
-    margin: 0 auto 28px;
+    margin: 0 0 40px;
     font-size: 16px;
     line-height: 1.35;
   }
 
+  /* В мобильной версии строки текста идут подряд, без принудительного переноса */
+  .welcome__text br {
+    display: none;
+  }
+
+  /* Кнопка 285 x 55 */
   .welcome__button {
-    width: 220px;
-    height: 48px;
+    width: 285px;
+    height: 55px;
     font-size: 16px;
   }
 
+  /* Большая звезда: на телефоне другая картинка */
   .welcome__decoration {
-    width: 48%;
-    height: 40%;
+    display: none;
   }
 
+  .welcome__decoration-mobile {
+    display: block;
+    top: 0;
+    right: 0;
+    width: 165px;
+  }
+
+  /* Маленькие звёзды: размеры увеличены */
   .welcome__star--1 {
-    top: 25px;
-    left: 8%;
-    width: 20px;
-    height: auto;
+    top: 101px;
+    left: 39px;
+    width: 36px;
+    height: 36px;
   }
 
   .welcome__star--2 {
-    top: 18px;
-    left: 15%;
-    width: 14px;
-    height: auto;
+    top: 68px;
+    left: 96px;
+    width: 22px;
+    height: 22px;
   }
 
   .welcome__star--3 {
-    top: auto;
-    right: 10%;
-    bottom: 45px;
+    top: 614px;
+    right: 35px;
+    bottom: auto;
     left: auto;
-    width: 30px;
-    height: auto;
+    width: 38px;
+    height: 38px;
   }
 
   .welcome__star--4 {
-    top: auto;
-    right: 18%;
-    bottom: 65px;
+    top: 586px;
+    right: 87px;
+    bottom: auto;
     left: auto;
-    width: 16px;
-    height: auto;
+    width: 20px;
+    height: 20px;
   }
 
   .ticker {
@@ -624,8 +652,85 @@ a {
     object-fit: contain;
   }
 
-  .games,
-  .mini-games {
+  /* Блок «Об играх» на телефоне скрыт */
+  .games {
     display: none;
+  }
+
+  /* Блок «Мини-игры» на телефоне остаётся: карточки идут колонкой,
+     картинка сверху, текст и кнопка ниже */
+  .mini-games {
+    padding: 40px 0 0;
+  }
+
+  .mini-games__content {
+    padding: 0 18px;
+  }
+
+  .mini-games__title {
+    width: 100%;
+    height: auto;
+    margin-bottom: 32px;
+    font-size: 48px;
+    line-height: 1.2;
+  }
+
+  .mini-games__list {
+    padding-bottom: 40px;
+  }
+
+  .mini-card,
+  .mini-card--reverse {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
+
+  .mini-card__image {
+    order: -1;
+    flex: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 6 / 5;
+  }
+
+  .mini-card__info {
+    flex: none;
+    align-items: stretch;
+    width: 100%;
+    padding: 28px 28px 32px;
+  }
+
+  .mini-card__title {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .mini-card__text {
+    width: 100%;
+    margin-bottom: 32px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .mini-card__button {
+    width: 100%;
+    height: 55px;
+    font-size: 16px;
+  }
+
+  .mini-games__star {
+    display: none;
+  }
+
+  .footer {
+    height: 120px;
+  }
+
+  .footer__text {
+    font-size: 16px;
+    line-height: 20px;
   }
 }
